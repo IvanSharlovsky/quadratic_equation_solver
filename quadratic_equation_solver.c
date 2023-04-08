@@ -1,5 +1,6 @@
 // Quadratic equation solver
 #include <stdio.h>
+#include <stdbool.h>
 #include <math.h>
 #include <assert.h>
 #include "clear_buffer.h"
