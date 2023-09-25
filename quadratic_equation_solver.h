@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdbool.h>
-#include <math.h>
-#include <assert.h>
+#pragma once
+
 
 //constant for compare format double
 const double ACCURACY = 1e-6;
