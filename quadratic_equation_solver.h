@@ -2,10 +2,6 @@
 #include <stdbool.h>
 #pragma once
 
-
-//constant for compare format double
-const double ACCURACY = 1e-6;
-
 enum num_roots
 {
     INF_ROOTS = -1,

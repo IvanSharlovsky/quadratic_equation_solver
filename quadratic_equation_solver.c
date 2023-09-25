@@ -5,13 +5,19 @@
 #include "quadratic_equation_solver.h"
 
 
+//constant for compare format double
+const double ACCURACY = 1e-6;
+
+
 
 void read_coefficient(double* coef) {
     
     bool allowed_enter = 0;
 
     if (allowed_enter = scanf("%lf", &coef) == 0) {
-        printf("Invalid enter!\n");
+        printf("Invalid enter!\n"
+        "coefficient = ");
+        clear_buffer();
         read_coefficient(coef);
     }
 }
