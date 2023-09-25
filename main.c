@@ -2,6 +2,9 @@
 #include <math.h>
 #include "quadratic_equation_solver.h"
 
+void read_coefficient(double* coef);
+void clear_buffer();
+
 int main() {
 
     int n_errors = run_unit_test();
@@ -34,4 +37,21 @@ int main() {
 
         num_of_roots(n_roots, x1, x2);
     }
+}
+
+void read_coefficient(double* coef) {
+    
+    bool allowed_enter = 0;
+
+    if (allowed_enter = scanf("%lf", &coef) == 0) {
+        printf("Invalid enter!\n"
+        "coefficient = ");
+        clear_buffer();
+        read_coefficient(coef);
+    }
+}
+
+void clear_buffer() {
+
+    while (getchar() != '\n') { ; }
 }
