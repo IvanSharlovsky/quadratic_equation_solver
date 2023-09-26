@@ -1,12 +1,9 @@
 #include <stdio.h>
-#include <stdbool.h>
 #include <math.h>
 #include <assert.h>
+
 #include "quadratic_equation_solver.h"
-
-
-//constant for compare format double
-const double ACCURACY = 1e-6;
+#include "floating_point_math.h"
 
 
 
@@ -66,38 +63,30 @@ int solve_line_eq(double b, double c, double* x) {
 
 
 
-void num_of_roots(int n_roots, double x1, double x2) {
+void answer(int number_of_roots, double x1, double x2) {
 
-    switch (n_roots)
+    switch (number_of_roots)
     {
-    case 0: printf("\n\nNo roots!\n");
+    case NO_ROOTS: 
+        printf("\n\nThis equation hasn't any roots\n");
         break;
 
-    case 1: printf("\n\nThere is only one root.\n");
-        printf("result1 = %lf\n", x1);
+    case ONE_ROOT: 
+        printf("\n\nThis equation has one root.\n"
+        "result1 = %lf\n", x1);
         break;
 
-    case 2: printf("\n\nresult1 = %lf\tresult2 = %lf\n", x1, x2);
+    case TWO_ROOTS: 
+        printf("\n\nThis equation has infinite number of roots.\n"
+        "result1 = %lf\tresult2 = %lf\n", x1, x2);
         break;
 
-    case INF_ROOTS: printf("\n\nAny number\n");
+    case INF_ROOTS: 
+        printf("\n\nThis equation has infinite number of roots\n");
         break;
 
-    default: printf("\n\nmain(): ERROR: n_roots = %d\n", n_roots);
+    default: 
+        printf("\n\nERROR: n_roots = %d\n", number_of_roots);
         break;
     }
-}
-
-
-
-bool cmp_with_0(double val) {
-
-    return (fabs(val) < ACCURACY);
-}
-
-
-
-bool is_equal(double val1, double val2) {
-
-    return (cmp_with_0(val1 - val2));
 }
