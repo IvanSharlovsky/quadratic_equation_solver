@@ -1,10 +1,16 @@
 CC=gcc
+CFLAGS=-c -Wall -Wextra
+SOURCES=main.c quadratic_equation_solver.c quadratic_equation_tests.c floating_point_math.c
+OBJECTS=$(SOURCES:.c=.o)
 
-all:
-	$(CC) main.c quadratic_equation_solver.c quadratic_equation_tests.c floating_point_math.c -o main -lm
+main: $(OBJECTS)
+	$(CC) $(OBJECTS) -o main -lm
+
+$(OBJECTS): $(SOURCES)
+	$(CC) $(CFLAGS) $(SOURCES)
 
 clean:
-	rm -f main
+	rm -f *.o main
 
 debug:
 	valgrind ./main

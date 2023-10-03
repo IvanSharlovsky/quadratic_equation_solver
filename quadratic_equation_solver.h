@@ -1,6 +1,3 @@
-#pragma once
-#include <stdio.h>
-
 enum num_roots
 {
     INF_ROOTS = -1,

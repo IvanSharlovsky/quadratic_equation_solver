@@ -47,7 +47,7 @@ void read_coefficient(double* coef) {
     
     bool allowed_enter = 0;
 
-    if (allowed_enter = scanf("%lf", coef) == 0) {
+    if ((allowed_enter = scanf("%lf", coef)) == false) {
         printf("Invalid enter!\n"
         "coefficient = ");
         clear_buffer();
