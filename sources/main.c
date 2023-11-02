@@ -2,8 +2,8 @@
 #include <math.h>
 #include <stdbool.h>
 
-#include "quadratic_equation_solver.h"
-#include "quadratic_equation_tests.h"
+#include "../include/quadratic_equation_solver.h"
+#include "../include/quadratic_equation_tests.h"
 
 void read_coefficient(double* coef);
 void clear_buffer();

@@ -2,8 +2,8 @@
 #include <math.h>
 #include <assert.h>
 
-#include "quadratic_equation_solver.h"
-#include "floating_point_math.h"
+#include "../include/quadratic_equation_solver.h"
+#include "../include/floating_point_math.h"
 
 
 
@@ -72,12 +72,12 @@ void answer(int number_of_roots, double x1, double x2) {
         break;
 
     case ONE_ROOT: 
-        printf("\n\nThis equation has one root.\n"
+        printf("\n\nThis equation has one root\n"
         "result1 = %lf\n", x1);
         break;
 
     case TWO_ROOTS: 
-        printf("\n\nThis equation has infinite number of roots.\n"
+        printf("\n\nThis equation has two roots\n"
         "result1 = %lf\tresult2 = %lf\n", x1, x2);
         break;
 

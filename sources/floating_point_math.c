@@ -2,7 +2,7 @@
 #include <stdbool.h>
 #include <math.h>
 
-#include "floating_point_math.h"
+#include "../include/floating_point_math.h"
 
 //constant for compare format double
 const double ACCURACY = 1e-6;
