@@ -5,57 +5,60 @@
 #include "../include/quadratic_equation_solver.h"
 #include "../include/quadratic_equation_tests.h"
 
-void read_coefficient(double* coef);
+void get_coefficient(double* coef, char coef_name);
 void clear_buffer();
 
-int main() {
-
+int main()
+{
     int number_of_failed_test = run_unit_test();
 
-    if (number_of_failed_test != 0) {
+    if (number_of_failed_test != 0)
+    {
         printf("FAILED! Number of failed test is %d\n", number_of_failed_test);
         return 0;
     }
-    else {
-
+    else
+    {
         printf(
             "# quadratic equation solver\n"
-            "# Sharlovsky Ivan, 2023\n\n"
-            "To solve a quadratic equation (ax^2 + bx + c = 0) "
+            "# Sharlovskiy Ivan, 2023\n\n"
+            "To solve a quadratic equation (ax^2 + bx + c = 0), "
             "please, enter the coefficients:\n");
 
         double a = NAN, b = NAN, c = NAN;
+        char var_a = 'a', var_b = 'b', var_c = 'c';
 
-        printf("\nFirst coefficient (a)= ");
-        read_coefficient(&a);
+        get_coefficient(&a, var_a);
 
-        printf("\nSecond coefficient (b)= ");
-        read_coefficient(&b);
+        get_coefficient(&b, var_b);
 
-        printf("\nThird coefficient (c)= ");
-        read_coefficient(&c);
+        get_coefficient(&c, var_c);
 
         double x1 = NAN, x2 = NAN;
 
         int number_of_roots = solve_quad_eq(a, b, c, &x1, &x2);
 
         answer(number_of_roots, x1, x2);
+
+        return 0;
     }
 }
 
-void read_coefficient(double* coef) {
+void get_coefficient(double* coef, char coef_name)
+{    
+    printf("\nCoefficient (%c)= ", coef_name);
     
-    bool allowed_enter = 0;
+    bool b_allowed_enter = 0;
 
-    if ((allowed_enter = scanf("%lf", coef)) == false) {
-        printf("Invalid enter!\n"
-        "coefficient = ");
+    if ((b_allowed_enter = scanf("%lf", coef)) == false)
+    {
+        printf("Invalid enter!\n");
         clear_buffer();
-        read_coefficient(coef);
+        get_coefficient(coef, coef_name);
     }
 }
 
-void clear_buffer() {
-
+void clear_buffer()
+{
     while (getchar() != '\n') { ; }
 }
