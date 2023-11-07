@@ -7,29 +7,30 @@
 
 
 
-int solve_quad_eq(double a, double b, double c, double* x1, double* x2) {
-
+int solve_quad_eq(double a, double b, double c, double* x1, double* x2)
+{
     assert(x1);
     assert(x2);
-    if (cmp_with_0(a)) {
-    
+
+    if (cmp_with_0(a))
+    {
         return solve_line_eq(b, c, x1);
     }
-    else {
-    
+    else
+    {
         double discriminant = b * b - 4 * a * c;
         //veriable to optimize calculating
         double double_a = 2 * a;
 
-        if (discriminant >= 0) {
-        
-            if (cmp_with_0(discriminant)) {
-            
+        if (discriminant >= 0)
+        {
+            if (cmp_with_0(discriminant))
+            {
                 *x1 = -b / (double_a);
                 return ONE_ROOT;
             }
-            else {
-            
+            else
+            {
                 //veriable to optimize calculating
                 double sqrt_discriminant = sqrt(discriminant);
 
@@ -39,8 +40,8 @@ int solve_quad_eq(double a, double b, double c, double* x1, double* x2) {
                 return TWO_ROOTS;
             }
         }
-        else {
-        
+        else
+        {
             return NO_ROOTS;
         }
     }
@@ -48,8 +49,8 @@ int solve_quad_eq(double a, double b, double c, double* x1, double* x2) {
 
 
 
-int solve_line_eq(double b, double c, double* x) {
-
+int solve_line_eq(double b, double c, double* x)
+{
     if (cmp_with_0(b))
     {
         return (cmp_with_0(c)) ? INF_ROOTS : NO_ROOTS;
@@ -63,8 +64,8 @@ int solve_line_eq(double b, double c, double* x) {
 
 
 
-void answer(int number_of_roots, double x1, double x2) {
-
+void print_answer(int number_of_roots, double x1, double x2)
+{
     switch (number_of_roots)
     {
     case NO_ROOTS: 

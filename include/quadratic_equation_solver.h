@@ -1,3 +1,5 @@
+#pragma once
+
 enum num_roots
 {
     INF_ROOTS = -1,
@@ -8,4 +10,4 @@ enum num_roots
 
 int solve_quad_eq(double a, double b, double c, double* x1, double* x2);
 int solve_line_eq(double b, double c, double* x);
-void answer(int number_of_roots, double x1, double x2);
+void print_answer(int number_of_roots, double x1, double x2);
