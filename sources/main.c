@@ -5,12 +5,12 @@
 #include "../include/quadratic_equation_solver.h"
 #include "../include/quadratic_equation_tests.h"
 
-void get_coefficient(double* coef, char coef_name);
+void get_coefficient(double* coef, char coef_name); //Getting coefficient from input (until getting number)
 void clear_buffer();
 
 int main()
 {
-    int number_of_failed_test = run_unit_test();
+    int number_of_failed_test = run_unit_test(); //Starting test
 
     if (number_of_failed_test != 0)
     {
@@ -26,19 +26,18 @@ int main()
             "please, enter the coefficients:\n");
 
         double a = NAN, b = NAN, c = NAN;
-        char var_a = 'a', var_b = 'b', var_c = 'c';
 
-        get_coefficient(&a, var_a);
+        get_coefficient(&a, 'a');
 
-        get_coefficient(&b, var_b);
+        get_coefficient(&b, 'b');
 
-        get_coefficient(&c, var_c);
+        get_coefficient(&c, 'c');
 
         double x1 = NAN, x2 = NAN;
 
-        int number_of_roots = solve_quad_eq(a, b, c, &x1, &x2);
+        int number_of_roots = solve_quad_eq(a, b, c, &x1, &x2); //General function in this project
 
-        answer(number_of_roots, x1, x2);
+        print_answer(number_of_roots, x1, x2);
 
         return 0;
     }
