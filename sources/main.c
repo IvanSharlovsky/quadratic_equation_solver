@@ -17,39 +17,35 @@ int main()
         printf("FAILED! Number of failed test is %d\n", number_of_failed_test);
         return 0;
     }
-    else
-    {
-        printf(
-            "# quadratic equation solver\n"
-            "# Sharlovskiy Ivan, 2023\n\n"
-            "To solve a quadratic equation (ax^2 + bx + c = 0), "
-            "please, enter the coefficients:\n");
+    
+    printf(
+        "# quadratic equation solver\n"
+        "# Sharlovskiy Ivan, 2023\n\n"
+        "To solve a quadratic equation (ax^2 + bx + c = 0), "
+        "please, enter the coefficients:\n");
 
-        double a = NAN, b = NAN, c = NAN;
+    double a = NAN, b = NAN, c = NAN;
 
-        get_coefficient(&a, 'a');
+    get_coefficient(&a, 'a');
+    get_coefficient(&b, 'b');
+    get_coefficient(&c, 'c');
 
-        get_coefficient(&b, 'b');
+    double x1 = NAN, x2 = NAN;
 
-        get_coefficient(&c, 'c');
+    int number_of_roots = solve_quad_eq(a, b, c, &x1, &x2); //General function in this project
+    print_answer(number_of_roots, x1, x2);
 
-        double x1 = NAN, x2 = NAN;
+    return 0;
 
-        int number_of_roots = solve_quad_eq(a, b, c, &x1, &x2); //General function in this project
-
-        print_answer(number_of_roots, x1, x2);
-
-        return 0;
-    }
 }
 
 void get_coefficient(double* coef, char coef_name)
 {    
     printf("\nCoefficient (%c)= ", coef_name);
     
-    bool b_allowed_enter = 0;
+    bool allow_enter = 0;
 
-    if ((b_allowed_enter = scanf("%lf", coef)) == false)
+    if ((allow_enter = scanf("%lf", coef)) == false)
     {
         printf("Invalid enter!\n");
         clear_buffer();

@@ -13,38 +13,31 @@ int solve_quad_eq(double a, double b, double c, double* x1, double* x2)
     assert(x2);
 
     if (cmp_with_0(a))
-    {
         return solve_line_eq(b, c, x1);
-    }
-    else
+
+    double discriminant = b * b - 4 * a * c;
+    
+    if (discriminant >= 0)
     {
-        double discriminant = b * b - 4 * a * c;
         //veriable to optimize calculating
         double double_a = 2 * a;
 
-        if (discriminant >= 0)
+        if (cmp_with_0(discriminant))
         {
-            if (cmp_with_0(discriminant))
-            {
-                *x1 = -b / (double_a);
-                return ONE_ROOT;
-            }
-            else
-            {
-                //veriable to optimize calculating
-                double sqrt_discriminant = sqrt(discriminant);
-
-                *x1 = (-b + sqrt_discriminant) / (double_a);
-                *x2 = (-b - sqrt_discriminant) / (double_a);
-
-                return TWO_ROOTS;
-            }
+            *x1 = -b / (double_a);
+            return ONE_ROOT;
         }
-        else
-        {
-            return NO_ROOTS;
-        }
+        
+        //veriable to optimize calculating
+        double sqrt_discriminant = sqrt(discriminant);
+
+        *x1 = (-b + sqrt_discriminant) / (double_a);
+        *x2 = (-b - sqrt_discriminant) / (double_a);
+
+        return TWO_ROOTS;
     }
+
+    return NO_ROOTS;
 }
 
 
@@ -52,14 +45,10 @@ int solve_quad_eq(double a, double b, double c, double* x1, double* x2)
 int solve_line_eq(double b, double c, double* x)
 {
     if (cmp_with_0(b))
-    {
         return (cmp_with_0(c)) ? INF_ROOTS : NO_ROOTS;
-    }
-    else
-    {
-        *x = -c / b;
-        return ONE_ROOT;
-    }
+    
+    *x = -c / b;
+    return ONE_ROOT;
 }
 
 
