@@ -1,5 +1,5 @@
 build
-main
+quad_solver
 .vscode
 .exe
 *.o
