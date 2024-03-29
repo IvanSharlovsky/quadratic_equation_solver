@@ -2,7 +2,7 @@
 #include <stdbool.h>
 #include <math.h>
 
-#include "../include/floating_point_math.h"
+#include "floating_point_math.h"
 
 bool cmp_with_0(double val)
 {

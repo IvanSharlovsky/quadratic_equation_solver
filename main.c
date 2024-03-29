@@ -2,8 +2,8 @@
 #include <math.h>
 #include <stdbool.h>
 
-#include "../include/quadratic_equation_solver.h"
-#include "../include/quadratic_equation_tests.h"
+#include "quadratic_equation_solver.h"
+#include "quadratic_equation_tests.h"
 
 void get_coefficient(double* coef, char coef_name); //Getting coefficient from input (until getting number)
 void clear_buffer();

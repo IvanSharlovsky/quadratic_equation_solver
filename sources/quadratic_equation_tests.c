@@ -2,9 +2,9 @@
 #include <stdbool.h>
 #include <math.h>
 
-#include "../include/quadratic_equation_solver.h"
-#include "../include/quadratic_equation_tests.h"
-#include "../include/floating_point_math.h"
+#include "quadratic_equation_solver.h"
+#include "quadratic_equation_tests.h"
+#include "floating_point_math.h"
 
 
 

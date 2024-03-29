@@ -2,8 +2,8 @@
 #include <math.h>
 #include <assert.h>
 
-#include "../include/quadratic_equation_solver.h"
-#include "../include/floating_point_math.h"
+#include "quadratic_equation_solver.h"
+#include "floating_point_math.h"
 
 
 
