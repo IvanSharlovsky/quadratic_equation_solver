@@ -6,6 +6,7 @@ QEMU_USER ?= qemu-x86_64
 CFLAGS ?= -O3 -Wall -Wextra -Werror
 LFLAGS ?= -static
 DEBUG_FLAGS ?= -DEBUG -O0 -Og -Wall -Wextra -Werror
+TARGET ?= main
 
 BUILD_DIR := ./build
 SRC_DIR := ./sources
@@ -39,7 +40,7 @@ $(BUILD_DIR)/quadratic_equation_tests.o: $(SRC_DIR)/quadratic_equation_tests.c \
 $(BUILD_DIR)/floating_point_math.o: $(SRC_DIR)/floating_point_math.c $(INC_DIR)/floating_point_math.h
 	$(CC) -I $(INC_DIR) -c $(CFLAGS) $< -o $@
 
-debug: main.c $(SRC_DIR)/$(wildcard *.c)
+debug: _build_dir main.c $(SRC_DIR)/$(wildcard *.c)
 	$(CC) -I $(INC_DIR) $(DEBUG_FLAGS) $^ -o $(BUILD_DIR)/debug
 
 run-qemu: main
@@ -47,14 +48,11 @@ run-qemu: main
 
 start-container:
 	docker start cpp 
-
-enter: 
-	docker exec -it cpp bash
 	
-build-docker: start-container enter run-qemu	
-	cd $(APP_DIR) \
-	CC=/opt/sc-dt/riscv-gcc/bin/riscv64-unknown-linux-gnu-gcc \
-	QEMU_USER=/opt/sc-dt/tools/bin/qemu-riscv64 
+build-docker: start-container	
+	docker exec -it cpp bash -c "cd $(APP_DIR)" make $(TARGET)
+
+	
 
 .PHONY: clean valgrind
 
