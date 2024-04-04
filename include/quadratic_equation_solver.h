@@ -1,5 +1,3 @@
-#pragma once
-
 enum num_roots
 {
     INF_ROOTS = -1,

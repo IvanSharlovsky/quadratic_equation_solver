@@ -1,4 +1,3 @@
-#pragma once
 #include <stdbool.h>
 
 bool cmp_with_0(double val);
