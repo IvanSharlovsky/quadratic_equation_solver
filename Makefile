@@ -1,4 +1,3 @@
-APP_DIR ?= ~/Documents/Github/quadratic_equation_solver
 APP := quad-solver
 
 CC ?= gcc
@@ -7,6 +6,7 @@ CFLAGS ?= -O3 -Wall -Wextra -Werror
 LFLAGS ?= -static
 DEBUG_FLAGS ?= -DEBUG -O0 -Og -Wall -Wextra -Werror
 TARGET ?= main
+CONTAINER ?= rv_tools_experiments
 
 BUILD_DIR := ./build
 SRC_DIR := ./sources
@@ -40,19 +40,21 @@ $(BUILD_DIR)/quadratic_equation_tests.o: $(SRC_DIR)/quadratic_equation_tests.c \
 $(BUILD_DIR)/floating_point_math.o: $(SRC_DIR)/floating_point_math.c $(INC_DIR)/floating_point_math.h
 	$(CC) -I $(INC_DIR) -c $(CFLAGS) $< -o $@
 
-debug: _build_dir main.c $(SRC_DIR)/$(wildcard *.c)
-	$(CC) -I $(INC_DIR) $(DEBUG_FLAGS) $^ -o $(BUILD_DIR)/debug
+debug: _build_dir main.c $(wildcard $(SRC_DIR)/*.c) $(wildcard $(INC_DIR)/*.h)
+	$(CC) -I $(INC_DIR) $(DEBUG_FLAGS) main.c $(wildcard $(SRC_DIR)/*.c) $(wildcard $(INC_DIR)/*.h) -lm \
+	-o $(BUILD_DIR)/debug
 
 run-qemu: main
 	$(QEMU_USER) $(BUILD_DIR)/$(APP)
 
 start-container:
-	docker start cpp 
+	docker start $(CONTAINER) 
 	
-build-docker: start-container	
-	docker exec -it cpp bash -c "cd $(APP_DIR)" make $(TARGET)
+build-docker: start-container 	
+	docker exec -d $(CONTAINER) bash -c "make do-actual-building"
 
-	
+do-actual-building:
+	export OK=everything-ok!
 
 .PHONY: clean valgrind
 
