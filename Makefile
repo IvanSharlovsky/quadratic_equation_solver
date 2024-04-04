@@ -5,8 +5,6 @@ QEMU_USER ?= qemu-x86_64
 CFLAGS ?= -O3 -Wall -Wextra -Werror
 LFLAGS ?= -static
 DEBUG_FLAGS ?= -DEBUG -O0 -Og -Wall -Wextra -Werror
-TARGET ?= main
-CONTAINER ?= rv_tools_experiments
 
 BUILD_DIR := ./build
 SRC_DIR := ./sources
