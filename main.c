@@ -5,12 +5,14 @@
 #include "quadratic_equation_solver.h"
 #include "quadratic_equation_tests.h"
 
-void get_coefficient(double* coef, char coef_name); //Getting coefficient from input (until getting number)
+//Getting coefficient from input until getting number
+void get_coefficient(double* coef, char coef_name); 
 void clear_buffer();
 
 int main()
 {
-    int number_of_failed_test = run_unit_test(); //Starting test
+    //Starting test
+    int number_of_failed_test = run_unit_test();
 
     if (number_of_failed_test != 0)
     {
@@ -18,21 +20,25 @@ int main()
         return 0;
     }
     
-    printf(
+    printf("\n"
+        "---------------------------------------------------\n"
         "# quadratic equation solver\n"
-        "# Sharlovskiy Ivan, 2023\n\n"
+        "# Sharlovskiy Ivan, 2023\n"
+        "-------------------------------------------------\n\n"
         "To solve a quadratic equation (ax^2 + bx + c = 0), "
         "please, enter the coefficients:\n");
 
     double a = NAN, b = NAN, c = NAN;
 
+    //Getting coefficient from input until getting number
     get_coefficient(&a, 'a');
     get_coefficient(&b, 'b');
     get_coefficient(&c, 'c');
 
     double x1 = NAN, x2 = NAN;
 
-    int number_of_roots = solve_quad_eq(a, b, c, &x1, &x2); //General function in this project
+    //General function in this project
+    int number_of_roots = solve_quad_eq(a, b, c, &x1, &x2); 
     print_answer(number_of_roots, x1, x2);
 
     return 0;
@@ -41,7 +47,7 @@ int main()
 
 void get_coefficient(double* coef, char coef_name)
 {    
-    printf("\nCoefficient (%c)= ", coef_name);
+    printf("\nCoefficient %c= ", coef_name);
     
     bool allow_enter = 0;
 

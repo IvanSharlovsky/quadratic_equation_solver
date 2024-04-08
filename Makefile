@@ -1,6 +1,6 @@
 APP := quad-solver
 
-CC = gcc
+CC ?= gcc
 QEMU_USER ?= qemu-x86_64
 CFLAGS ?= -O3 -Wall -Wextra -Werror
 LFLAGS ?= -static
@@ -41,7 +41,7 @@ $(BUILD_DIR)/floating_point_math.o: $(SRC_DIR)/floating_point_math.c $(INC_DIR)/
 
 debug: _build_dir main.c $(wildcard $(SRC_DIR)/*.c) $(wildcard $(INC_DIR)/*.h)
 	$(CC) -I $(INC_DIR) $(DEBUG_FLAGS) main.c $(wildcard $(SRC_DIR)/*.c) $(wildcard $(INC_DIR)/*.h) -lm \
-	-o $(BUILD_DIR)/debug
+	-o $(BUILD_DIR)/$@
 
 run-qemu: build
 	$(QEMU_USER) $(BUILD_DIR)/$(APP)

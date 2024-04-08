@@ -10,16 +10,16 @@
 
 int run_unit_test()
 {    
-    int n_errors = 0;
-           /* test_number| a| b| c| number_of_roots_ref| x1_ref| x2_ref */
-    if (b_unit_test(      1, 0, 0, 0,           INF_ROOTS,    NAN,    NAN) == false)  n_errors++;
-    if (b_unit_test(      2, 0, 0, 1,            NO_ROOTS,    NAN,    NAN) == false)  n_errors++;
-    if (b_unit_test(      3, 0, 1, 0,            ONE_ROOT,      0,    NAN) == false)  n_errors++;
-    if (b_unit_test(      4, 1, 0, 0,            ONE_ROOT,      0,    NAN) == false)  n_errors++;
-    if (b_unit_test(      5, 1, 1, 0,           TWO_ROOTS,      0,     -1) == false)  n_errors++;
-    if (b_unit_test(      6, 1, 1, 1,            NO_ROOTS,    NAN,    NAN) == false)  n_errors++;
-    if (b_unit_test(      7, 1, 1,-2,           TWO_ROOTS,      1,     -2) == false)  n_errors++; // check for discriminant
-    return n_errors;
+    int number_of_errors = 0;
+             /* test_number, a, b, c, number_of_roots_ref, x1_ref, x2_ref */
+    if (b_unit_test(      1, 0, 0, 0,           INF_ROOTS,    NAN,    NAN) == false)  number_of_errors++; // check for infinite number of roots
+    if (b_unit_test(      2, 0, 0, 1,            NO_ROOTS,    NAN,    NAN) == false)  number_of_errors++; // check for missing roots if a = 0 & b = 0
+    if (b_unit_test(      3, 0, 1, 0,            ONE_ROOT,      0,    NAN) == false)  number_of_errors++; // check maths and coef b in line equation
+    if (b_unit_test(      4, 1, 0, 0,            ONE_ROOT,      0,    NAN) == false)  number_of_errors++; // check maths if b = 0
+    if (b_unit_test(      5, 1, 1, 0,           TWO_ROOTS,      0,     -1) == false)  number_of_errors++; // check maths
+    if (b_unit_test(      6, 1, 1, 1,            NO_ROOTS,    NAN,    NAN) == false)  number_of_errors++; // check for missing roots if if a != 0 & b != 0
+    if (b_unit_test(      7, 1, 1,-2,           TWO_ROOTS,      1,     -2) == false)  number_of_errors++; // check for discriminant
+    return number_of_errors;
 }
 
 
