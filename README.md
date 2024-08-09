@@ -16,7 +16,7 @@
 
 - ### Print `make run` to build and run app
 
-- ### Print `make debug` to build app with debig options
+- ### Print `make debug` to build app with debug options
 
 - ### Print `make qemu-run` to run app with qemu-x86_64 as default
 
