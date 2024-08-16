@@ -4,9 +4,9 @@
 
 ## This project implements
 
-- ### 7 tests to check the correct operation of the app
+- ### 7 Unit-tests to check the correct math operation
 
-- ### check the valid input of equation coefficients
+- ### Smart valid input control system
 
 ## How to build and run
 
